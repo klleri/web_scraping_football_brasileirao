@@ -15,7 +15,7 @@ request_delay = 5.5 # Seconds to wait between requests to avoid overloading the 
 
 print(f"Starting scraping for years: {years_to_scrape}")
 
-# --- Main Loop by Year ---
+#  Main Loop by Year 
 for year in years_to_scrape:
     standings_url = base_standings_url.format(year=year)
     print(f"\n Processing Year: {year}")
@@ -168,12 +168,14 @@ for year in years_to_scrape:
             print("  UNEXPECTED ERROR processing team {team_name} ({year}): {e}")
             # Continue to the next team
 
-# --- Finalization ---
+# Finalization 
 print("\nScraping finished.")
 
 # Combine all DataFrames into a single one
 if all_matches_data:
     final_df = pd.concat(all_matches_data, ignore_index=True)
+    final_df.columns = [c.lower() for c in match_df.columns]
+    final_df.to_csv("matches.csv")
     print(f"\nTotal Série A matches collected: {len(final_df)}")
     print(f"Teams collected: {final_df['Team'].unique()}")
     print(f"Seasons collected: {final_df['Season'].unique()}")
