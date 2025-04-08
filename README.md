@@ -1,4 +1,4 @@
-# Brazilian Série A Match Data Scraper (fbref.com)
+# Brazilian Série A Match Data: Scraper (fbref.com) and Outcome Prediction
 
 ## Description
 
